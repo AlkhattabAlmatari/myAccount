@@ -1,0 +1,64 @@
+body {
+    background: linear-gradient(135deg, #1d2671, #c33764);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: Arial;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 20px;
+    text-align: center;
+    width: 280px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+}
+
+.profile-img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #333;
+    margin-bottom: 10px;
+}
+
+h2 {
+    margin: 10px 0 5px;
+}
+
+p {
+    color: gray;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+/* شكل الروابط */
+.link {
+    display: block;
+    text-decoration: none;
+    color: white;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 10px;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+/* تيك توك */
+.tiktok {
+    background: black;
+}
+
+/* يوتيوب */
+.youtube {
+    background: red;
+}
+
+/* تأثير عند المرور بالماوس */
+.link:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+}
