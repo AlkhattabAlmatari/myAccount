@@ -1,76 +1,80 @@
 :root {
-    --bg-gradient: linear-gradient(135deg, #1d2671, #c33764); /* التدرج الذي اخترته */
-    --card-bg: rgba(255, 255, 255, 0.95);
-    --tiktok: #000000;
-    --youtube: #FF0000;
+    /* التدرج اللوني الذي اخترته سابقاً */
+    --main-gradient: linear-gradient(135deg, #1d2671, #c33764);
+    --white: #ffffff;
 }
-
-* { box-sizing: border-box; }
 
 body {
     margin: 0;
-    font-family: 'Tajawal', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    overflow: hidden; /* لمنع ظهور شريط التمرير بسبب الأيقونات المتحركة */
+    font-family: 'Tajawal', sans-serif;
+    /* منع ظهور شريط التمرير بسبب الأيقونات المتحركة */
+    overflow: hidden; 
 }
 
-/* تثبيت الخلفية الأصلية */
-.static-bg {
+/* تثبيت الخلفية الأصلية في مكانها */
+.bg-fixed {
     position: fixed;
     top: 0; left: 0;
     width: 100%; height: 100%;
-    background: var(--bg-gradient);
+    background: var(--main-gradient);
     z-index: -2; /* أبعد طبقة للخلف */
 }
 
-/* تنسيق العناصر العائمة */
-.floating-container i {
+/* تنسيق الأيقونات المتحركة */
+.floating-icons i {
     position: absolute;
-    color: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.1); /* لون أبيض شفاف جداً */
     font-size: 2.5rem;
     z-index: -1; /* خلف البطاقة */
     bottom: -100px;
     animation: floatUp 15s infinite linear;
 }
 
-/* توزيع الأيقونات بسرعات وأماكن مختلفة */
-.floating-container i:nth-child(1) { left: 10%; animation-duration: 12s; }
-.floating-container i:nth-child(2) { left: 30%; animation-duration: 18s; animation-delay: 2s; }
-.floating-container i:nth-child(3) { left: 55%; animation-duration: 15s; }
-.floating-container i:nth-child(4) { left: 75%; animation-duration: 20s; animation-delay: 5s; }
-.floating-container i:nth-child(5) { left: 90%; animation-duration: 14s; }
+/* توزيع الأيقونات بأماكن وسرعات مختلفة لتبدو عشوائية */
+.floating-icons i:nth-child(1) { left: 10%; animation-duration: 12s; }
+.floating-icons i:nth-child(2) { left: 35%; animation-duration: 18s; animation-delay: 2s; }
+.floating-icons i:nth-child(3) { left: 50%; animation-duration: 15s; animation-delay: 5s; }
+.floating-icons i:nth-child(4) { left: 75%; animation-duration: 20s; }
+.floating-icons i:nth-child(5) { left: 90%; animation-duration: 14s; animation-delay: 3s; }
 
+/* برمجة حركة الصعود للأيقونات */
 @keyframes floatUp {
     0% { transform: translateY(0) rotate(0deg); opacity: 0; }
     20% { opacity: 1; }
     80% { opacity: 1; }
-    100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+    100% { transform: translateY(-115vh) rotate(360deg); opacity: 0; }
 }
 
-/* تنسيق البطاقة */
+/* تنسيق البطاقة الرئيسية */
 .card {
-    background: var(--card-bg);
-    padding: 35px 25px;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px 30px;
     border-radius: 25px;
     text-align: center;
     width: 320px;
     box-shadow: 0 15px 35px rgba(0,0,0,0.3);
-    backdrop-filter: blur(5px); /* تأثير زجاجي بسيط */
+    backdrop-filter: blur(5px); /* تأثير زجاجي بسيط خلف البطاقة */
 }
 
+/* تنسيق الصورة الشخصية */
 .profile-img {
     width: 110px; height: 110px;
-    border-radius: 50%;
+    border-radius: 50%; /* جعل الصورة دائرة */
     border: 4px solid #fff;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    object-fit: cover;
+    object-fit: cover; /* يضمن عدم تمدد الصورة */
     margin-bottom: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
-.btn {
+h2 { color: #333; margin: 10px 0; font-size: 22px; }
+.bio { color: #666; font-size: 15px; margin-bottom: 25px; }
+
+/* تنسيق الروابط */
+.link {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -78,16 +82,16 @@ body {
     text-decoration: none;
     color: white;
     padding: 12px;
-    margin: 15px 0;
+    margin: 12px 0;
     border-radius: 12px;
     font-weight: bold;
-    transition: 0.3s ease;
+    transition: 0.3s ease; /* سرعة الحركة عند تمرير الماوس */
 }
 
-.tiktok { background: var(--tiktok); }
-.youtube { background: var(--youtube); }
+.tiktok { background: #000; }
+.youtube { background: #FF0000; }
 
-.btn:hover {
-    transform: scale(1.05) translateY(-3px);
+.link:hover {
+    transform: translateY(-3px) scale(1.02);
     filter: brightness(1.2);
 }
