@@ -1,84 +1,93 @@
-/* تحديد متغيرات الألوان (CSS Variables) لتسهيل التعديل مستقبلاً - ممارسة برمجية جيدة */
 :root {
-    --primary-gradient: linear-gradient(135deg, #1d2671, #c33764);
-    --white: #ffffff;
-    --tiktok-color: #010101;
-    --youtube-color: #FF0000;
-    --text-main: #333;
-    --text-gray: #777;
+    --bg-gradient: linear-gradient(135deg, #1d2671, #c33764); /* التدرج الذي اخترته */
+    --card-bg: rgba(255, 255, 255, 0.95);
+    --tiktok: #000000;
+    --youtube: #FF0000;
 }
 
-/* تنسيق الجسم الرئيسي للشاشة */
+* { box-sizing: border-box; }
+
 body {
-    background: var(--primary-gradient);
-    display: flex;             /* تفعيل نظام الـ Flex لعمل المحاذاة */
-    justify-content: center;   /* توسيط العناصر أفقياً */
-    align-items: center;       /* توسيط العناصر عمودياً */
-    height: 100vh;             /* جعل الارتفاع يأخذ كامل طول الشاشة */
     margin: 0;
-    font-family: 'Tajawal', sans-serif; /* استخدام الخط الذي استدعيناه */
+    font-family: 'Tajawal', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden; /* لمنع ظهور شريط التمرير بسبب الأيقونات المتحركة */
 }
 
-/* تنسيق البطاقة (The Card) */
+/* تثبيت الخلفية الأصلية */
+.static-bg {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: var(--bg-gradient);
+    z-index: -2; /* أبعد طبقة للخلف */
+}
+
+/* تنسيق العناصر العائمة */
+.floating-container i {
+    position: absolute;
+    color: rgba(255, 255, 255, 0.1);
+    font-size: 2.5rem;
+    z-index: -1; /* خلف البطاقة */
+    bottom: -100px;
+    animation: floatUp 15s infinite linear;
+}
+
+/* توزيع الأيقونات بسرعات وأماكن مختلفة */
+.floating-container i:nth-child(1) { left: 10%; animation-duration: 12s; }
+.floating-container i:nth-child(2) { left: 30%; animation-duration: 18s; animation-delay: 2s; }
+.floating-container i:nth-child(3) { left: 55%; animation-duration: 15s; }
+.floating-container i:nth-child(4) { left: 75%; animation-duration: 20s; animation-delay: 5s; }
+.floating-container i:nth-child(5) { left: 90%; animation-duration: 14s; }
+
+@keyframes floatUp {
+    0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+    20% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+}
+
+/* تنسيق البطاقة */
 .card {
-    background: var(--white);
-    padding: 40px 25px;
-    border-radius: 25px;       /* جعل الحواف دائرية بشكل ناعم */
+    background: var(--card-bg);
+    padding: 35px 25px;
+    border-radius: 25px;
     text-align: center;
     width: 320px;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.3); /* إضافة ظل لإعطاء عمق للبطاقة */
-    transition: 0.3s;          /* مدة الحركة عند التفاعل مع البطاقة */
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    backdrop-filter: blur(5px); /* تأثير زجاجي بسيط */
 }
 
-/* تنسيق الصورة */
 .profile-img {
-    width: 120px;
-    height: 120px;
-    object-fit: cover;         /* يضمن عدم تمدد الصورة بشكل خاطئ */
-    border-radius: 50%;        /* تحويل الصورة لدائرة */
-    border: 5px solid #f0f0f0;
+    width: 110px; height: 110px;
+    border-radius: 50%;
+    border: 4px solid #fff;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    object-fit: cover;
     margin-bottom: 15px;
 }
 
-h2 {
-    color: var(--text-main);
-    margin: 10px 0;
-    font-size: 22px;
-}
-
-.bio {
-    color: var(--text-gray);
-    font-size: 15px;
-    margin-bottom: 25px;
-}
-
-/* تنسيق عام لكل رابط */
-.link {
+.btn {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;                 /* مسافة بين الأيقونة والنص */
-    text-decoration: none;     /* إزالة الخط تحت الرابط */
+    gap: 10px;
+    text-decoration: none;
     color: white;
-    padding: 14px;
-    margin: 12px 0;
-    border-radius: 15px;
+    padding: 12px;
+    margin: 15px 0;
+    border-radius: 12px;
     font-weight: bold;
-    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* حركة ارتدادية جميلة */
+    transition: 0.3s ease;
 }
 
-.tiktok { background-color: var(--tiktok-color); }
-.youtube { background-color: var(--youtube-color); }
+.tiktok { background: var(--tiktok); }
+.youtube { background: var(--youtube); }
 
-/* تأثير عند تمرير الماوس (Hover) */
-.link:hover {
-    transform: translateY(-5px); /* رفع الزر للأعلى قليلاً */
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-    filter: brightness(1.2);    /* تفتيح اللون قليلاً */
-}
-
-/* أيقونات Font Awesome */
-.link i {
-    font-size: 18px;
+.btn:hover {
+    transform: scale(1.05) translateY(-3px);
+    filter: brightness(1.2);
 }
