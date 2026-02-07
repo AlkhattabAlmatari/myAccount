@@ -1,64 +1,84 @@
+/* تحديد متغيرات الألوان (CSS Variables) لتسهيل التعديل مستقبلاً - ممارسة برمجية جيدة */
+:root {
+    --primary-gradient: linear-gradient(135deg, #1d2671, #c33764);
+    --white: #ffffff;
+    --tiktok-color: #010101;
+    --youtube-color: #FF0000;
+    --text-main: #333;
+    --text-gray: #777;
+}
+
+/* تنسيق الجسم الرئيسي للشاشة */
 body {
-    background: linear-gradient(135deg, #1d2671, #c33764);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    font-family: Arial;
+    background: var(--primary-gradient);
+    display: flex;             /* تفعيل نظام الـ Flex لعمل المحاذاة */
+    justify-content: center;   /* توسيط العناصر أفقياً */
+    align-items: center;       /* توسيط العناصر عمودياً */
+    height: 100vh;             /* جعل الارتفاع يأخذ كامل طول الشاشة */
+    margin: 0;
+    font-family: 'Tajawal', sans-serif; /* استخدام الخط الذي استدعيناه */
 }
 
+/* تنسيق البطاقة (The Card) */
 .card {
-    background: white;
-    padding: 25px;
-    border-radius: 20px;
+    background: var(--white);
+    padding: 40px 25px;
+    border-radius: 25px;       /* جعل الحواف دائرية بشكل ناعم */
     text-align: center;
-    width: 280px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+    width: 320px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3); /* إضافة ظل لإعطاء عمق للبطاقة */
+    transition: 0.3s;          /* مدة الحركة عند التفاعل مع البطاقة */
 }
 
+/* تنسيق الصورة */
 .profile-img {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 3px solid #333;
-    margin-bottom: 10px;
-}
-
-h2 {
-    margin: 10px 0 5px;
-}
-
-p {
-    color: gray;
-    font-size: 14px;
+    width: 120px;
+    height: 120px;
+    object-fit: cover;         /* يضمن عدم تمدد الصورة بشكل خاطئ */
+    border-radius: 50%;        /* تحويل الصورة لدائرة */
+    border: 5px solid #f0f0f0;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     margin-bottom: 15px;
 }
 
-/* شكل الروابط */
-.link {
-    display: block;
-    text-decoration: none;
-    color: rgb(0, 0, 0);
-    padding: 12px;
+h2 {
+    color: var(--text-main);
     margin: 10px 0;
-    border-radius: 10px;
+    font-size: 22px;
+}
+
+.bio {
+    color: var(--text-gray);
     font-size: 15px;
-    transition: 0.3s;
+    margin-bottom: 25px;
 }
 
-/* تيك توك */
-.tiktok {
-    background: black;
+/* تنسيق عام لكل رابط */
+.link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;                 /* مسافة بين الأيقونة والنص */
+    text-decoration: none;     /* إزالة الخط تحت الرابط */
+    color: white;
+    padding: 14px;
+    margin: 12px 0;
+    border-radius: 15px;
+    font-weight: bold;
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* حركة ارتدادية جميلة */
 }
 
-/* يوتيوب */
-.youtube {
-    background: red;
-}
+.tiktok { background-color: var(--tiktok-color); }
+.youtube { background-color: var(--youtube-color); }
 
-/* تأثير عند المرور بالماوس */
+/* تأثير عند تمرير الماوس (Hover) */
 .link:hover {
-    transform: scale(1.05);
-    opacity: 0.9;
+    transform: translateY(-5px); /* رفع الزر للأعلى قليلاً */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    filter: brightness(1.2);    /* تفتيح اللون قليلاً */
+}
+
+/* أيقونات Font Awesome */
+.link i {
+    font-size: 18px;
 }
