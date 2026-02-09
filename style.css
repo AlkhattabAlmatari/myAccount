@@ -1,97 +1,198 @@
 :root {
-    /* التدرج اللوني الذي اخترته سابقاً */
-    --main-gradient: linear-gradient(135deg, #1d2671, #c33764);
-    --white: #ffffff;
+  --main-gradient: linear-gradient(135deg, #1d2671, #c33764);
+  --white: #ffffff;
 }
 
 body {
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    font-family: 'Tajawal', sans-serif;
-    /* منع ظهور شريط التمرير بسبب الأيقونات المتحركة */
-    overflow: hidden; 
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: 'Tajawal', sans-serif;
+  overflow: hidden;
 }
 
-/* تثبيت الخلفية الأصلية في مكانها */
 .bg-fixed {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: var(--main-gradient);
-    z-index: -2; /* أبعد طبقة للخلف */
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: var(--main-gradient);
+  z-index: -2;
 }
 
-/* تنسيق الأيقونات المتحركة */
+/* الأيقونات المتحركة */
 .floating-icons i {
-    position: absolute;
-    color: rgba(255, 255, 255, 0.1); /* لون أبيض شفاف جداً */
-    font-size: 2.5rem;
-    z-index: -1; /* خلف البطاقة */
-    bottom: -100px;
-    animation: floatUp 15s infinite linear;
+  position: absolute;
+  color: rgba(255, 255, 255, 0.10);
+  font-size: 2.5rem;
+  z-index: -1;
+  bottom: -100px;
+  animation: floatUp 15s infinite linear;
 }
 
-/* توزيع الأيقونات بأماكن وسرعات مختلفة لتبدو عشوائية */
 .floating-icons i:nth-child(1) { left: 10%; animation-duration: 12s; }
 .floating-icons i:nth-child(2) { left: 35%; animation-duration: 18s; animation-delay: 2s; }
 .floating-icons i:nth-child(3) { left: 50%; animation-duration: 15s; animation-delay: 5s; }
 .floating-icons i:nth-child(4) { left: 75%; animation-duration: 20s; }
 .floating-icons i:nth-child(5) { left: 90%; animation-duration: 14s; animation-delay: 3s; }
 
-/* برمجة حركة الصعود للأيقونات */
 @keyframes floatUp {
-    0% { transform: translateY(0) rotate(0deg); opacity: 0; }
-    20% { opacity: 1; }
-    80% { opacity: 1; }
-    100% { transform: translateY(-115vh) rotate(360deg); opacity: 0; }
+  0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { transform: translateY(-115vh) rotate(360deg); opacity: 0; }
 }
 
-/* تنسيق البطاقة الرئيسية */
+/* الكارد في النص */
 .card {
-    background: rgba(255, 255, 255, 0.95);
-    padding: 40px 30px;
-    border-radius: 25px;
-    text-align: center;
-    width: 320px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
-    backdrop-filter: blur(5px); /* تأثير زجاجي بسيط خلف البطاقة */
+  background: rgba(255, 255, 255, 0.95);
+  padding: 40px 30px;
+  border-radius: 25px;
+  text-align: center;
+  width: 340px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+  backdrop-filter: blur(5px);
 }
 
-/* تنسيق الصورة الشخصية */
 .profile-img {
-    width: 110px; height: 110px;
-    border-radius: 50%; /* جعل الصورة دائرة */
-    border: 4px solid #fff;
-    object-fit: cover; /* يضمن عدم تمدد الصورة */
-    margin-bottom: 15px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  width: 110px; height: 110px;
+  border-radius: 50%;
+  border: 4px solid #fff;
+  object-fit: cover;
+  margin-bottom: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
 h2 { color: #333; margin: 10px 0; font-size: 22px; }
-.bio { color: #666; font-size: 15px; margin-bottom: 25px; }
+.bio { color: #666; font-size: 15px; margin-bottom: 18px; }
 
-/* تنسيق الروابط */
+/* الروابط */
 .link {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    text-decoration: none;
-    color: white;
-    padding: 12px;
-    margin: 12px 0;
-    border-radius: 12px;
-    font-weight: bold;
-    transition: 0.3s ease; /* سرعة الحركة عند تمرير الماوس */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  text-decoration: none;
+  color: white;
+
+  padding: 12px;
+  margin: 12px 0;
+  border-radius: 12px;
+  font-weight: bold;
+
+  transition: transform 0.25s ease, filter 0.25s ease;
+  will-change: transform;
 }
 
 .tiktok { background: #000; }
 .youtube { background: #FF0000; }
 
 .link:hover {
-    transform: translateY(-3px) scale(1.02);
-    filter: brightness(1.2);
+  transform: translateY(-6px);
+  filter: brightness(1.15);
+}
+
+/* لوحة الزوار يمين */
+.visitors-panel {
+  position: fixed;
+  top: 50%;
+  right: 25px;
+  transform: translateY(-50%);
+
+  width: 260px;
+  max-height: 70vh;
+  overflow: auto;
+
+  background: rgba(255,255,255,0.92);
+  border-radius: 16px;
+  padding: 15px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+  backdrop-filter: blur(6px);
+}
+
+.visitors-panel h3 {
+  margin: 0 0 10px;
+  font-size: 16px;
+  color: #333;
+}
+
+/* صندوق إدخال الزوار داخل لوحة الزوار */
+.visitor-box {
+  margin-bottom: 12px;
+}
+
+.visitor-box input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  font-family: 'Tajawal', sans-serif;
+  direction: rtl;
+  outline: none;
+  box-sizing: border-box;
+}
+
+/* placeholder بالنص مضبوط */
+.visitor-box input::placeholder {
+  opacity: 0.7;
+  text-align: center;
+}
+
+.visitor-box input:placeholder-shown { text-align: center; }
+.visitor-box input:not(:placeholder-shown) { text-align: right; }
+
+.visitor-box button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 12px;
+  border: none;
+  background: #1d2671;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  font-family: 'Tajawal', sans-serif;
+}
+
+#welcomeMessage {
+  margin-top: 10px;
+  font-weight: bold;
+  color: #333;
+  min-height: 22px;
+  text-align: center;
+}
+
+/* قائمة الزوار */
+#visitorsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#visitorsList li {
+  padding: 8px 10px;
+  margin: 6px 0;
+  border-radius: 10px;
+  background: rgba(29, 38, 113, 0.08);
+  color: #333;
+  font-size: 14px;
+}
+
+/* على الشاشات الصغيرة نخلي لوحة الزوار تحت */
+@media (max-width: 900px) {
+  .visitors-panel {
+    top: auto;
+    bottom: 15px;
+    right: 15px;
+    transform: none;
+    max-height: 35vh;
+    width: 240px;
+  }
+
+  body {
+    align-items: flex-start;
+    padding-top: 35px;
+  }
 }

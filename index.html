@@ -1,48 +1,61 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alkhattab Almatari | الصفحة الشخصية</title>
-    
-    <link rel="icon" type="image/x-icon" href="photo/Photo.jpg">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alkhattab Almatari | الصفحة الشخصية</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
-    <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/x-icon" href="photo/Photo.jpg" />
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
+  <div class="bg-fixed"></div>
 
-    <div class="bg-fixed"></div>
+  <div class="floating-icons" aria-hidden="true">
+    <i class="fas fa-code"></i>
+    <i class="fas fa-terminal"></i>
+    <i class="fas fa-database"></i>
+    <i class="fas fa-laptop-code"></i>
+    <i class="fas fa-microchip"></i>
+  </div>
 
-    <div class="floating-icons">
-        <i class="fas fa-code"></i>
-        <i class="fas fa-terminal"></i>
-        <i class="fas fa-database"></i>
-        <i class="fas fa-laptop-code"></i>
-        <i class="fas fa-microchip"></i>
+  <!-- الكارد في النص: فقط البروفايل + روابطك -->
+  <div class="card">
+    <div class="profile-container">
+      <img src="photo/Photo.jpg" alt="Alkhattab" class="profile-img" />
     </div>
 
-    <div class="card">
-        <div class="profile-container">
-            <img src="photo/Photo.jpg" alt="Alkhattab" class="profile-img">
-        </div>
+    <h2>Alkhattab Almatari</h2>
+    <p class="bio">صانع محتوى ومبرمج ويب 🌟🚀</p>
 
-        <h2>Alkhattab Almatari</h2>
-        <p class="bio">صانع محتوى ومبرمج ويب 🌟🚀</p>
+    <div class="links-container">
+      <a href="https://www.tiktok.com/@alkhattab_stories" class="link tiktok" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-tiktok"></i> تيك توك
+      </a>
 
-        <div class="links-container">
-            <a href="https://www.tiktok.com/@alkhattab_stories" class="link tiktok" target="_blank" rel="noopener noreferrer">
-                <i class="fab fa-tiktok"></i> تيك توك
-            </a>
+      <a href="https://www.youtube.com/@Alkhattab_Voiceover" class="link youtube" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-youtube"></i> يوتيوب
+      </a>
+    </div>
+  </div>
 
-            <a href="https://www.youtube.com/@Alkhattab_Voiceover" class="link youtube" target="_blank" rel="noopener noreferrer">
-                <i class="fab fa-youtube"></i> يوتيوب
-            </a>
-        </div>
+  <!-- لوحة الزوار يمين: فيها الإدخال + القائمة -->
+  <aside class="visitors-panel">
+    <h3>الزوار</h3>
+
+    <div class="visitor-box">
+      <input type="text" id="visitorName" placeholder="اكتب اسمك هنا" maxlength="24" />
+      <button type="button" id="enterBtn">دخول</button>
+      <p id="welcomeMessage"></p>
     </div>
 
+    <ul id="visitorsList"></ul>
+  </aside>
+
+  <!-- مهم: type="module" -->
+  <script type="module" src="script.js"></script>
 </body>
 </html>
